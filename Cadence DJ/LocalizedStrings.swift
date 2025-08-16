@@ -22,4 +22,21 @@ enum LocalizedStrings {
         "Done",
         comment: "Button title to complete a flow."
     )
+
+    enum Menu {
+        static let generatePlaylist = NSLocalizedString(
+            "Generate playlist",
+            comment: "Menu item title to generate a playlist based on the selected cadence."
+        )
+
+        static let trackCadence = NSLocalizedString(
+            "Track cadence",
+            comment: "Menu item title to track the user's cadence while running or cycling."
+        )
+
+        static let placeholder = NSLocalizedString(
+            "Select a menu option",
+            comment: "Text displayed if detail view is visible with no menu option selected."
+        )
+    }
 }

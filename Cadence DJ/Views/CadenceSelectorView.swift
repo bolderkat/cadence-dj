@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct CadenceSelectorView: View {
-    private enum Constants {
-        static let defaultValue = 170
-        static let range = 100...250
-    }
-
-    @State private var cadenceValue = Constants.defaultValue // TODO: pass in from above
+    @Binding var cadenceValue: Int
     @FocusState private var isFocused
 
     var body: some View {
@@ -27,7 +22,7 @@ struct CadenceSelectorView: View {
             Stepper(
                 "",
                 value: $cadenceValue,
-                in: Constants.range
+                in: GlobalDefaults.cadenceRange
             )
             .labelsHidden()
             .accessibilityLabel(LocalizedStrings.cadenceStepper)
@@ -36,7 +31,7 @@ struct CadenceSelectorView: View {
 
     private var textField: some View {
         TextField(
-            "\(Constants.defaultValue)",
+            "\(GlobalDefaults.defaultCadence)",
             value: $cadenceValue,
             format: .number.grouping(.never)
         )
@@ -60,10 +55,10 @@ struct CadenceSelectorView: View {
     }
 
     private func clampCadenceValue() {
-        cadenceValue = cadenceValue.clamped(to: Constants.range)
+        cadenceValue = cadenceValue.clamped(to: GlobalDefaults.cadenceRange)
     }
 }
 
 #Preview {
-    CadenceSelectorView()
+    CadenceSelectorView(cadenceValue: .constant(198))
 }
