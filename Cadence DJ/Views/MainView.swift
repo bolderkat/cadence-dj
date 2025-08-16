@@ -37,7 +37,6 @@ struct MainView: View {
                 Text(LocalizedStrings.Menu.placeholder)
             }
         }
-
     }
 }
 
